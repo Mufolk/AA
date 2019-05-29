@@ -78,7 +78,6 @@ function fatestWay(params) {
 			f1.push(valueOnTheF2Line);
 			l1[j] = 2;
 		}
-		console.log(j, f1);
 		
 		if (valueFromTheSameF2Line <= valueOnTheF1Line) {
 			f2.push(valueFromTheSameF2Line);
@@ -88,34 +87,30 @@ function fatestWay(params) {
 			l2[j] = 1;
 		}
 
-		console.log(j, f2);
-
-		
 	}
 	
 	//Setting the conditionals to variables
 	let theBestValuesFromLineOne = f1[n] + x[0];
 	let theBestValuesFromLineTwo = f2[n] + x[1];
+	let line = [];
 	
 	if (theBestValuesFromLineOne <= theBestValuesFromLineTwo) {
 		f = theBestValuesFromLineOne;
-		l = 1;
-		line = l1;
+		l = 0;
 	} else {
 		f = theBestValuesFromLineTwo;
-		l = 2;
-		line = l2;
+		l = 1;
 	}
-	
+	line.push(l1);
+	line.push(l2);
 	printStations(l, n, line);	
-	
 }
 
 function printStations(l, n, line){
 	let i = l;
 	console.log("Line " , i , " Station " , n);
 	for (j = n; j >= 2; j--) {
-		let i = line[j-1];
+		i = line[i-1][j-1];
 		console.log("Line " , i,  " Station " , j-1);
 	}
 }
