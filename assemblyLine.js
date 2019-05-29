@@ -20,7 +20,7 @@ let a = [
 
 let n = 6;
 
-let e = [2,4]];
+let e = [2,4];
 
 let x = [3, 2];
 
@@ -43,6 +43,7 @@ let t = [
 		];
 
 function fatestWay(params) {
+	let j = 0; 
 	let f1 = [e[0]+a[0,0]];
 	let f2 = [e[1]+a[1,0]];
 	
@@ -78,7 +79,7 @@ function fatestWay(params) {
 	let theBestValuesFromLineOne = f1[n] + x[0];
 	let theBestValuesFromLineTwo = f2[n] + x[1];
 	
-	if (theBestValuesFromLineOne] <= theBestValuesFromLineTwo) {
+	if (theBestValuesFromLineOne <= theBestValuesFromLineTwo) {
 		f = theBestValuesFromLineOne;
 		l = 1;
 		line = l1;
@@ -89,15 +90,17 @@ function fatestWay(params) {
 	}
 	
 	printStations(l, n, line);	
-}
-let fastestWay = new Function(a, t, e, x, n){
 	
 }
 
 function printStations(l, n, line){
 	let i = l;
-	console.log("Line " + i + "Station " + n);
-	for (j = 1; j > n; j++) {
-		console.log("Line " + line[j] + "Station " + j-1);
+	console.log("Line " , i , " Station " , n);
+	for (j = n; j >= 2; j--) {
+		let i = line[j-1];
+		console.log("Line " , i,  " Station " , j-1);
+		
 	}
 }
+
+fatestWay();
