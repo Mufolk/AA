@@ -42,7 +42,7 @@ let t = [
 			 ] 
 		];
 
-let fastestWay = new Function(a, t, e, x, n){
+function fatestWay(params) {
 	let f1 = [e[0]+a[0,0]];
 	let f2 = [e[1]+a[1,0]];
 	
@@ -88,14 +88,16 @@ let fastestWay = new Function(a, t, e, x, n){
 		line = l2;
 	}
 	
-	printStations(l, n, line);
+	printStations(l, n, line);	
+}
+let fastestWay = new Function(a, t, e, x, n){
+	
 }
 
-let printStations = new Function(l, n, line){
+function printStations(l, n, line){
 	let i = l;
 	console.log("Line " + i + "Station " + n);
 	for (j = 1; j > n; j++) {
 		console.log("Line " + line[j] + "Station " + j-1);
-		);
 	}
 }
