@@ -44,35 +44,53 @@ let t = [
 
 function fatestWay(params) {
 	let j = 0; 
-	let f1 = [e[0]+a[0,0]];
-	let f2 = [e[1]+a[1,0]];
-	
+	let f1 = [e[0]+a[0][0]];
+	let f2 = [e[1]+a[1][0]];
+
 	let l1 = [0];
 	let l2 = [0];
+
+	let valueFromTheSameF1Line = f1[j-1] + a[0][j];
+	let valueOnTheF2Line = f2[j-1] + t[1][j-1] + a[0][j];
+	
+	let valueFromTheSameF2Line = f2[j-1] + a[1][j];
+	let valueOnTheF1Line = f1[j-1] + t[0][j-1] + a[1][j];
 	
 	//Setting the conditionals to variables
-	let valueFromTheSameF1Line = f1[j-1] + a[0,j];
-	let valueOnTheF2Line = f2[j-1] + t[1,j-1] + a[0,j];
-	
-	let valueFromTheSameF2Line = f2[j-1] + a[1,j];
-	let valueOnTheF1Line = f1[j-1] + t[0,j-1] + a[1,j];
+	function setVariables(j) {
+		valueFromTheSameF1Line = f1[j-1] + a[0][j];
+		valueOnTheF2Line = f2[j-1] + t[1][j-1] + a[0][j];
+		
+		valueFromTheSameF2Line = f2[j-1] + a[1][j];
+		valueOnTheF1Line = f1[j-1] + t[0][j-1] + a[1][j];
+	}
+
 	
 	for (j = 1; j < n; j++){
+
+		setVariables(j);
+
 		if (valueFromTheSameF1Line <= valueOnTheF2Line) {
-			f1[j] = valueFromTheSameF1Line;
+			
+			f1.push(valueFromTheSameF1Line);
 			l1[j] = 1;
 		} else {
-			f1[j] = valueOnTheF2Line;
+			f1.push(valueOnTheF2Line);
 			l1[j] = 2;
 		}
+		console.log(j, f1);
 		
 		if (valueFromTheSameF2Line <= valueOnTheF1Line) {
-			f1[j] = valueFromTheSameF2Line;
+			f2.push(valueFromTheSameF2Line);
 			l2[j] = 2;
 		} else {
-			f1[j] = valueOnTheF1Line;
+			f2.push(valueOnTheF1Line);
 			l2[j] = 1;
 		}
+
+		console.log(j, f2);
+
+		
 	}
 	
 	//Setting the conditionals to variables
@@ -99,7 +117,6 @@ function printStations(l, n, line){
 	for (j = n; j >= 2; j--) {
 		let i = line[j-1];
 		console.log("Line " , i,  " Station " , j-1);
-		
 	}
 }
 
